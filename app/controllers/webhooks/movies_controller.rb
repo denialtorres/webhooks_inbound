@@ -7,4 +7,10 @@ class Webhooks::MoviesController < Webhooks::BaseController
     Webhooks::MoviesJob.perform_later(record)
     head :ok
   end
+
+  private
+
+  def verify_event
+    head :bad_request if params[:fail_verification]
+  end
 end

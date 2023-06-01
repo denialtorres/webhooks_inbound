@@ -3,9 +3,15 @@ class Webhooks::BaseController < ApplicationController
   # skip_before_action :verify_authenticy_token
   skip_forgery_protection
 
+  before_action :verify_event
+
   def create
     InboundWebhook.create!(body: payload)
     head :ok
+  end
+
+  def verify_event
+    head :bad_request
   end
 
   def payload
