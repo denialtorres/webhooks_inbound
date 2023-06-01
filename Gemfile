@@ -74,3 +74,5 @@ group :development, :test do
   gem "faker"
   gem "rspec-rails"
 end
+
+gem "stripe", "~> 8.5"
